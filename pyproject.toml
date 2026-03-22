@@ -1,0 +1,31 @@
+[project]
+name = "quickscore"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "argostranslate>=1.11.0",
+    "deepl>=1.28.0",
+    "hypomnema[lxml]>=0.7",
+    "pydantic>=2.12.5",
+    "sacrebleu>=2.6.0",
+]
+maintainers = [
+    {name = "Ian Alexander List", email = "ian@possessiv.io"}
+]
+
+[build-system]
+requires = ["setuptools >= 77.0.3", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["quickscore"]
+package-dir = { "quickscore" = "src"}
+
+[dependency-groups]
+dev = [
+    "bandit>=1.9.4",
+    "ruff>=0.15.7",
+    "ty>=0.0.24",
+]
