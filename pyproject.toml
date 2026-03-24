@@ -3,7 +3,7 @@ name = "quickscore"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.12"
 dependencies = [
     "argostranslate>=1.11.0",
     "deepl>=1.28.0",
@@ -26,6 +26,11 @@ package-dir = { "quickscore" = "src"}
 [dependency-groups]
 dev = [
     "bandit>=1.9.4",
+    "lxml-stubs>=0.5.1",
     "ruff>=0.15.7",
     "ty>=0.0.24",
 ]
+
+[tool.ruff]
+line-length = 120
+include = ["src/**/*.py"]
