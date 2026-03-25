@@ -12,9 +12,13 @@ def _get_src_entry(tu: Tu, src_lang: str) -> str:
             return c
     raise ValueError("")
 
-def add_translation_to_tus(tmx_path: Path, translator: AbstractTranslator) -> list[Tu]:
-    src_lang: str = load(tmx_path, filter="header").__next__().srclang  # ty: ignore[unresolved-attribute, invalid-assignment]
-    tus: Generator[Tu, None, None] = load(tmx_path, filter="tu")  # ty: ignore[invalid-assignment]
+def add_translation_to_tus(tmx: Path | Tmx, translator: AbstractTranslator) -> list[Tu]:
+    if isinstance(tmx, Path):
+        src_lang: str = load(tmx, filter="header").__next__().srclang  # ty: ignore[unresolved-attribute, invalid-assignment]
+        tus: Generator[Tu, None, None] = load(tmx, filter="tu")  # ty: ignore[invalid-assignment]
+    else:
+        src_lang = tmx.header.srclang
+        tus = (tu for tu in tmx.body)
     target_lang = None
     prop = create_prop(f"translated via {translator.__class__.__name__}", "MTranslation")
     created_tus: list[Tu] = []

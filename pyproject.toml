@@ -3,7 +3,7 @@ name = "quickscore"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.12"
+requires-python = ">=3.13"
 dependencies = [
     "argostranslate>=1.11.0",
     "deepl>=1.28.0",
@@ -20,8 +20,12 @@ requires = ["setuptools >= 77.0.3", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools]
-packages = ["quickscore"]
-package-dir = { "quickscore" = "src"}
+packages = ["quickscore", "quickscore.translation"]
+package-dir = { "quickscore" = "src", "quickscore.translation" = "src/translation" }
+include-package-data = true
+
+[tool.setuptools.package-data]
+"quickscore.translation" = ["*.po", "*.mo", "locale/**"]
 
 [dependency-groups]
 dev = [
