@@ -7,7 +7,7 @@ requires-python = ">=3.13"
 dependencies = [
     "argostranslate>=1.11.0",
     "deepl>=1.28.0",
-    "hypomnema[lxml]>=0.7",
+    "hypomnema[lxml]==0.7",
     "pydantic>=2.12.5",
     "sacrebleu>=2.6.0",
 ]
